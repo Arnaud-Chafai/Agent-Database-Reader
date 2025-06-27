@@ -1,0 +1,61 @@
+{
+  "conceptos_negocio": {
+    "facturacion": {
+      "descripcion": "Sistema de ventas de música digital",
+      "tabla_principal": "Invoice",
+      "metricas_clave": ["Total", "InvoiceDate", "CustomerId"],
+      "relaciones": "Invoice -> InvoiceLine -> Track"
+    },
+    "catalogo_musical": {
+      "descripcion": "Biblioteca de música organizada jerárquicamente",
+      "jerarquia": "Artist > Album > Track",
+      "relaciones": "Artist tiene múltiples Albums, Album tiene múltiples Tracks"
+    },
+    "ventas_por_cliente": {
+      "descripcion": "Análisis de comportamiento de compra por cliente",
+      "metricas": ["frecuencia_compra", "valor_promedio", "total_gastado"],
+      "segmentacion": ["nuevos", "regulares", "VIP"]
+    },
+    "empleados": {
+      "descripcion": "Personal de la tienda musical",
+      "tabla_principal": "Employee", 
+      "jerarquia": "Manager -> Employee",
+      "metricas": ["ventas_por_empleado", "clientes_asignados"]
+    }
+  },
+  "sinonimos": {
+    "ventas": ["Invoice", "facturas", "compras", "transacciones", "pedidos"],
+    "canciones": ["Track", "temas", "pistas", "música", "songs"],
+    "artistas": ["Artist", "músicos", "bandas", "intérpretes", "performers"],
+    "clientes": ["Customer", "compradores", "usuarios", "buyers"],
+    "géneros": ["Genre", "estilos", "categorías musicales", "tipos"],
+    "álbumes": ["Album", "discos", "LPs", "releases"],
+    "empleados": ["Employee", "staff", "personal", "trabajadores"]
+  },
+  "calculos_comunes": {
+    "ingresos_totales": "SUM(Invoice.Total)",
+    "cliente_activo": "Customer con Invoice en últimos 12 meses",
+    "album_bestseller": "Album con mayor SUM(InvoiceLine.Quantity)",
+    "precio_promedio_track": "AVG(Track.UnitPrice)",
+    "ventas_por_empleado": "SUM(Invoice.Total) GROUP BY Employee",
+    "top_generos": "COUNT(Track) GROUP BY Genre",
+    "factura_promedio": "AVG(Invoice.Total)",
+    "clientes_por_pais": "COUNT(Customer) GROUP BY Country"
+  },
+  "reglas_negocio": {
+    "moneda": "Todos los precios están en USD",
+    "impuestos": "No hay impuestos separados, precio final incluido", 
+    "descuentos": "No hay sistema de descuentos implementado",
+    "geografia": "Customers distribuidos globalmente",
+    "catalogo": "Solo música digital, no física",
+    "empleados": "Cada empleado puede ser manager de otros"
+  },
+  "consultas_tipicas": {
+    "ventas_mensuales": "Agrupar Invoice por mes/año",
+    "top_artistas": "Contar ventas por Artist",
+    "analisis_geografico": "Agrupar por Customer.Country",
+    "rendimiento_empleados": "Relacionar Employee con sus ventas",
+    "preferencias_musicales": "Analizar Genre más vendidos",
+    "valor_cliente": "Calcular lifetime value por Customer"
+  }
+}

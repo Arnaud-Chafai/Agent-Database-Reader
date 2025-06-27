@@ -1,0 +1,25 @@
+[project]
+name = "sql-llm-agent"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115.14",
+    "httpx>=0.28.1",
+    "mcp>=1.10.1",
+    "pydantic>=2.11.7",
+    "pymssql>=2.3.5",
+    "pyodbc>=5.2.0",
+    "python-dotenv>=1.1.1",
+    "sqlalchemy>=2.0.41",
+    "structlog>=25.4.0",
+    "uvicorn[standard]>=0.34.3",
+]
+
+[dependency-groups]
+dev = [
+    "black>=25.1.0",
+    "pytest>=8.4.1",
+    "pytest-asyncio>=1.0.0",
+]

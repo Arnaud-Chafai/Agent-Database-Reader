@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  sql-llm-agent:
+    build: .
+    container_name: sql-llm-agent-mcp
+    environment:
+      - DB_SERVER=${DB_SERVER:-localhost\MSSQLSERVER01}
+      - DB_DATABASE=${DB_DATABASE:-Chinook}
+      - DB_USERNAME=${DB_USERNAME:-sql_reader}
+      - DB_PASSWORD=${DB_PASSWORD:-SecurePassword123!}
+      - DB_DRIVER=ODBC Driver 18 for SQL Server
+      - MCP_HOST=0.0.0.0
+      - MCP_PORT=8000
+      - MCP_LOG_LEVEL=INFO
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./context:/app/context:ro
+      - ./logs:/app/logs
+    networks:
+      - sql-llm-network
+    restart: unless-stopped
+
+networks:
+  sql-llm-network:
+    driver: bridge
+
+volumes:
+  logs:
