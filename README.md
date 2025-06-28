@@ -18,15 +18,14 @@ Un agente inteligente que permite consultas SQL seguras a través del protocolo 
 
 ## 🏗️ Arquitectura
 
-```mermaid
 graph TB
-    subgraph "Cliente LLM"
+    subgraph "Cliente LLM                                    "
         A[Claude Desktop] 
         B[GPT-4]
         C[Otros LLMs]
     end
     
-    subgraph "SQL LLM Agent"
+    subgraph "SQL LLM Agent                                                                      "
         D[Servidor MCP<br/>main.py] 
         E[Procesador de Consultas<br/>database.py]
         F[Contexto de Negocio<br/>glosario.json]
@@ -34,13 +33,13 @@ graph TB
         H[Validador de Seguridad]
     end
     
-    subgraph "Base de Datos"
+    subgraph "Base de Datos                                  "
         I[(SQL Server)]
         J[(Azure SQL)]
         K[(SQL Express)]
     end
     
-    subgraph "Herramientas MCP"
+    subgraph "Herramientas MCP                                                    "
         L[ejecutar_consulta_sql]
         M[obtener_esquema_bd]
         N[probar_conexion]
@@ -69,15 +68,21 @@ graph TB
     E --> J
     E --> K
     
-    style D fill:#e1f5fe
-    style E fill:#f3e5f5
-    style F fill:#fff3e0
-    style H fill:#ffebee
-    style L fill:#e8f5e8
-    style M fill:#e8f5e8
-    style N fill:#e8f5e8
-    style O fill:#e8f5e8
-```
+    style A fill:#ffffff,stroke:#333,stroke-width:2px,color:#000000
+    style B fill:#ffffff,stroke:#333,stroke-width:2px,color:#000000
+    style C fill:#ffffff,stroke:#333,stroke-width:2px,color:#000000
+    style D fill:#e1f5fe,stroke:#333,stroke-width:2px,color:#000000
+    style E fill:#f3e5f5,stroke:#333,stroke-width:2px,color:#000000
+    style F fill:#fff3e0,stroke:#333,stroke-width:2px,color:#000000
+    style G fill:#f1f8e9,stroke:#333,stroke-width:2px,color:#000000
+    style H fill:#ffebee,stroke:#333,stroke-width:2px,color:#000000
+    style I fill:#e3f2fd,stroke:#333,stroke-width:2px,color:#000000
+    style J fill:#e3f2fd,stroke:#333,stroke-width:2px,color:#000000
+    style K fill:#e3f2fd,stroke:#333,stroke-width:2px,color:#000000
+    style L fill:#e8f5e8,stroke:#333,stroke-width:2px,color:#000000
+    style M fill:#e8f5e8,stroke:#333,stroke-width:2px,color:#000000
+    style N fill:#e8f5e8,stroke:#333,stroke-width:2px,color:#000000
+    style O fill:#e8f5e8,stroke:#333,stroke-width:2px,color:#000000
 
 ### Flujo de Datos:
 
