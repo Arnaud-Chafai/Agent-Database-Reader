@@ -18,6 +18,7 @@ Un agente inteligente que permite consultas SQL seguras a través del protocolo 
 
 ## 🏗️ Arquitectura
 
+```mermaid
 graph TB
     subgraph "Cliente LLM                                    "
         A[Claude Desktop] 
@@ -83,6 +84,7 @@ graph TB
     style M fill:#e8f5e8,stroke:#333,stroke-width:2px,color:#000000
     style N fill:#e8f5e8,stroke:#333,stroke-width:2px,color:#000000
     style O fill:#e8f5e8,stroke:#333,stroke-width:2px,color:#000000
+```
 
 ### Flujo de Datos:
 
@@ -278,6 +280,7 @@ uv run black src/
 
 - ✅ **SQL Server** (todas las versiones modernas)
 - ✅ **Azure SQL Database**
+- ✅ **SQL Server Express**
 - 🔄 **Próximamente**: PostgreSQL, MySQL
 
 ## 🎯 Casos de Uso
