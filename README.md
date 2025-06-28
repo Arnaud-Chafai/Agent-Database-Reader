@@ -16,6 +16,78 @@
 
 Un agente inteligente que permite consultas SQL seguras a través del protocolo MCP, adaptable a cualquier base de datos SQL Server con contexto de negocio personalizable.
 
+## 🏗️ Arquitectura
+
+```mermaid
+graph TB
+    subgraph "Cliente LLM"
+        A[Claude Desktop] 
+        B[GPT-4]
+        C[Otros LLMs]
+    end
+    
+    subgraph "SQL LLM Agent"
+        D[Servidor MCP<br/>main.py] 
+        E[Procesador de Consultas<br/>database.py]
+        F[Contexto de Negocio<br/>glosario.json]
+        G[Modelos de Datos<br/>models.py]
+        H[Validador de Seguridad]
+    end
+    
+    subgraph "Base de Datos"
+        I[(SQL Server)]
+        J[(Azure SQL)]
+        K[(SQL Express)]
+    end
+    
+    subgraph "Herramientas MCP"
+        L[ejecutar_consulta_sql]
+        M[obtener_esquema_bd]
+        N[probar_conexion]
+        O[obtener_info_tabla]
+    end
+    
+    A --> D
+    B --> D
+    C --> D
+    
+    D --> L
+    D --> M
+    D --> N
+    D --> O
+    
+    L --> E
+    M --> E
+    N --> E
+    O --> E
+    
+    E --> F
+    E --> H
+    E --> G
+    
+    E --> I
+    E --> J
+    E --> K
+    
+    style D fill:#e1f5fe
+    style E fill:#f3e5f5
+    style F fill:#fff3e0
+    style H fill:#ffebee
+    style L fill:#e8f5e8
+    style M fill:#e8f5e8
+    style N fill:#e8f5e8
+    style O fill:#e8f5e8
+```
+
+### Flujo de Datos:
+
+1. **Cliente LLM** envía consulta en lenguaje natural
+2. **Servidor MCP** recibe y procesa la solicitud
+3. **Contexto de Negocio** enriquece la comprensión
+4. **Validador de Seguridad** verifica la consulta SQL
+5. **Procesador** ejecuta consulta segura en la base de datos
+6. **Respuesta** estructurada regresa al cliente LLM
+
 ## 🚀 Características
 
 - **Consultas seguras**: Solo SELECT, validación automática de sintaxis
@@ -201,7 +273,6 @@ uv run black src/
 
 - ✅ **SQL Server** (todas las versiones modernas)
 - ✅ **Azure SQL Database**
-- ✅ **SQL Server Express**
 - 🔄 **Próximamente**: PostgreSQL, MySQL
 
 ## 🎯 Casos de Uso
