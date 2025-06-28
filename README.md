@@ -1,6 +1,4 @@
-﻿# SQL LLM Agent 🤖
-
-<p align="center">
+﻿<p align="center">
   <img src="https://github.com/Arnaud-Chafai/Agent-Database-Reader/blob/main/Images/banner.png" alt="SQL LLM Agent Banner"/>
 </p>
 
