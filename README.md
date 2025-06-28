@@ -1,4 +1,7 @@
-﻿<p align="center">
+﻿## SQL LLM Agent 🤖
+Un agente inteligente que permite consultas SQL seguras a través del protocolo MCP, adaptable a cualquier base de datos SQL Server con contexto de negocio personalizable.
+---
+<p align="center">
   <img src="https://github.com/Arnaud-Chafai/Agent-Database-Reader/blob/main/Images/banner.png" alt="SQL LLM Agent Banner"/>
 </p>
 
@@ -16,8 +19,6 @@
 [![Docker](https://img.shields.io/badge/docker-ready-blue)](https://www.docker.com/)
 
 </div>
-
-Un agente inteligente que permite consultas SQL seguras a través del protocolo MCP, adaptable a cualquier base de datos SQL Server con contexto de negocio personalizable.
 
 ## 🏗️ Arquitectura
 
