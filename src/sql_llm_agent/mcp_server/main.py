@@ -186,42 +186,69 @@ def _obtener_contexto_glosario(query: str) -> str:
         query_lower = query.lower()
         contextos = []
         
-        # Detectar tablas mencionadas y añadir contexto
-        if 'invoice' in query_lower:
-            contextos.append("📊 **Ventas**: Las facturas representan transacciones completas. Total en USD.")
-            if 'invoiceline' in query_lower:
-                contextos.append("🔗 **Detalle**: InvoiceLine contiene items individuales de cada venta.")
+        # 🔍 BUSCAR EN SINÓNIMOS PRIMERO
+        sinonimos = glosario.get("sinonimos", {})
         
-        if 'track' in query_lower:
-            contextos.append("🎵 **Música**: Tracks son canciones individuales con precio por unidad.")
-            
-        if 'artist' in query_lower:
-            contextos.append("🎤 **Artistas**: Jerarquía Artist > Album > Track.")
-            
-        if 'customer' in query_lower:
-            contextos.append("👥 **Clientes**: Distribuidos globalmente. Segmentación por actividad de compra.")
-            
-        if 'employee' in query_lower:
-            contextos.append("💼 **Empleados**: Personal de ventas con estructura jerárquica manager-empleado.")
-            
-        if 'genre' in query_lower:
-            contextos.append("🎼 **Géneros**: Categorías musicales para análisis de preferencias.")
+        # Detectar qué conceptos están en la consulta
+        conceptos_detectados = []
         
-        # Añadir cálculos comunes si es relevante
+        for concepto, palabras_clave in sinonimos.items():
+            # Buscar tanto el concepto como sus sinónimos
+            todas_palabras = [concepto] + palabras_clave
+            
+            for palabra in todas_palabras:
+                if palabra.lower() in query_lower:
+                    conceptos_detectados.append(concepto)
+                    break  # Ya encontró este concepto
+        
+        # 📝 GENERAR CONTEXTO BASADO EN LO DETECTADO
+        conceptos_negocio = glosario.get("conceptos_negocio", {})
+        
+        for concepto in conceptos_detectados:
+            if concepto == "ventas":
+                facturacion = conceptos_negocio.get("facturacion", {})
+                desc = facturacion.get("descripcion", "Sistema de ventas")
+                contextos.append(f"📊 **Ventas**: {desc}")
+                
+            elif concepto == "canciones":
+                catalogo = conceptos_negocio.get("catalogo_musical", {})
+                desc = catalogo.get("descripcion", "Biblioteca de música organizada jerárquicamente")
+                contextos.append(f"🎵 **Música**: {desc}")
+                
+            elif concepto == "artistas":
+                catalogo = conceptos_negocio.get("catalogo_musical", {})
+                jerarquia = catalogo.get("jerarquia", "Artist > Album > Track")
+                contextos.append(f"🎤 **Artistas**: {jerarquia}")
+                
+            elif concepto == "clientes":
+                ventas_cliente = conceptos_negocio.get("ventas_por_cliente", {})
+                desc = ventas_cliente.get("descripcion", "Análisis de comportamiento de compra")
+                contextos.append(f"👥 **Clientes**: {desc}")
+                
+            elif concepto == "empleados":
+                empleados = conceptos_negocio.get("empleados", {})
+                desc = empleados.get("descripcion", "Personal de la tienda musical")
+                jerarquia = empleados.get("jerarquia", "Manager -> Employee")
+                contextos.append(f"💼 **Empleados**: {desc} - {jerarquia}")
+        
+        # 🧮 DETECTAR FUNCIONES SQL Y AÑADIR CONTEXTO DE CÁLCULOS
+        calculos_comunes = glosario.get("calculos_comunes", {})
+        
         if 'sum(' in query_lower and 'total' in query_lower:
-            contextos.append("💰 **Métrica**: Cálculo de ingresos totales (SUM de Invoice.Total).")
-            
+            if "ingresos_totales" in calculos_comunes:
+                contextos.append(f"💰 **Métrica**: {calculos_comunes['ingresos_totales']}")
+                
         if 'count(' in query_lower:
             contextos.append("📈 **Conteo**: Análisis de frecuencia/volumen de datos.")
             
         if 'avg(' in query_lower:
-            contextos.append("📊 **Promedio**: Cálculo de valores medios para análisis comparativo.")
+            if "precio_promedio_track" in calculos_comunes:
+                contextos.append(f"📊 **Promedio**: {calculos_comunes['precio_promedio_track']}")
         
         return "\n".join(contextos) if contextos else ""
         
     except Exception:
         return ""
-
 def main():
     """Punto de entrada principal del servidor MCP"""
     try:
