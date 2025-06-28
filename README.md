@@ -1,5 +1,10 @@
 ﻿# SQL LLM Agent 🤖
 
+<p align="center">
+  <img src="https://raw.githubusercontent.com/Arnaud-Chafai/Agent-Database-Reader/main/Images/ChatGPT%20Image%2028%20jun%202025%2C%2012_08_56.png" alt="SQL LLM Agent Banner"/>
+</p>
+
+
 <div align="center">
 
 ![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
