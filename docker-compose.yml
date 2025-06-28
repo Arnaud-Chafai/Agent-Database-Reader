@@ -5,10 +5,10 @@ services:
     build: .
     container_name: sql-llm-agent-mcp
     environment:
-      - DB_SERVER=${DB_SERVER:-localhost\MSSQLSERVER01}
-      - DB_DATABASE=${DB_DATABASE:-Chinook}
-      - DB_USERNAME=${DB_USERNAME:-sql_reader}
-      - DB_PASSWORD=${DB_PASSWORD:-SecurePassword123!}
+      - DB_SERVER=${DB_SERVER}
+      - DB_DATABASE=${DB_DATABASE}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
       - DB_DRIVER=ODBC Driver 18 for SQL Server
       - MCP_HOST=0.0.0.0
       - MCP_PORT=8000

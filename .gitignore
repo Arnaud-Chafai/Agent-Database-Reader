@@ -1,1 +1,113 @@
+# =============================================================================
+# SQL LLM Agent - GitIgnore
+# =============================================================================
+
+# ===== ARCHIVOS DE CONFIGURACIÓN SENSIBLES =====
+# Variables de entorno (actualmente .env está en .gitignore pero puede contener credenciales)
 .env
+.env.local
+.env.production
+.env.development
+.env.test
+
+# ===== PYTHON =====
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Environments
+.venv
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# UV package manager (usado en tu proyecto)
+.uv/
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# ===== LOGS =====
+# Directorio de logs mencionado en docker-compose.yml
+logs/
+*.log
+
+# ===== DOCKER =====
+# Override files para configuraciones locales
+docker-compose.override.yml
+docker-compose.local.yml
+
+# ===== IDE Y EDITORES =====
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# PyCharm
+.idea/
+*.iml
+
+# ===== SISTEMA OPERATIVO =====
+# Windows
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# ===== TEMPORALES =====
+# Archivos temporales
+*.tmp
+*.temp
+.cache/
+
+# ===== PRUEBAS =====
+# Archivos de prueba que puedan contener datos sensibles
+test_*.py
+tests/
+
+# ===== ESPECÍFICOS DEL PROYECTO =====
+# Archivos de configuración local que puedan override valores por defecto
+local_config.*
+dev_config.*
