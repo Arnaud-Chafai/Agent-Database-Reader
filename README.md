@@ -1,7 +1,7 @@
 ﻿# SQL LLM Agent 🤖
 
 <p align="center">
-  <img src="https://raw.githubusercontent.com/Arnaud-Chafai/Agent-Database-Reader/main/Images/ChatGPT%20Image%2028%20jun%202025%2C%2012_08_56.png" alt="SQL LLM Agent Banner"/>
+  <img src="https://github.com/Arnaud-Chafai/Agent-Database-Reader/blob/main/Images/banner.png" alt="SQL LLM Agent Banner"/>
 </p>
 
 
