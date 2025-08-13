@@ -97,7 +97,7 @@ graph TB
 ## 🚀 Características
 
 - **Consultas seguras**: Solo SELECT, validación automática de sintaxis
-- **Protocolo MCP**: Compatible con Claude, GPT-4 y otros LLMs
+- **Protocolo MCP**: Compatible con Claude
 - **Contexto inteligente**: Sistema de glosario personalizable para cualquier dominio
 - **Multi-base de datos**: Adaptable a cualquier esquema SQL Server
 - **Docker ready**: Despliegue sencillo y escalable
@@ -305,5 +305,6 @@ uv run black src/
 💡 **¿Tienes una idea?** [Crea una discussion](https://github.com/Arnaud-Chafai/Agent-Database-Reader/discussions)
 
 **[⬆ Volver arriba](#sql-llm-agent-)**
+
 
 </div>
